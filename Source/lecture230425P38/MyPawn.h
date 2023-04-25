@@ -14,6 +14,7 @@ class USpringArmComponent;
 class UCameraComponent;
 class UFloatingPawnMovement;
 class UArrowComponent;
+class UPropellerComponent;
 
 UCLASS()
 class LECTURE230425P38_API AMyPawn : public APawn
@@ -37,8 +38,8 @@ public:
 
 	UBoxComponent* Box;
 	UStaticMeshComponent* Body;
-	UStaticMeshComponent* Left;
-	UStaticMeshComponent* Right;
+	UPropellerComponent* Left;
+	UPropellerComponent* Right;
 	USpringArmComponent*  Arm;
 	UCameraComponent* Cam;
 	UFloatingPawnMovement* Movement;
