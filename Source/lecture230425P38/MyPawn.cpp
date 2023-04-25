@@ -10,6 +10,9 @@
 #include "GameFramework/FloatingPawnMovement.h"
 #include "Components/ArrowComponent.h"
 #include "PropellerComponent.h"
+#include "EnhancedInputComponent.h"
+#include "EnhancedInputSubsystems.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AMyPawn::AMyPawn()
@@ -82,5 +85,34 @@ void AMyPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+	UEnhancedInputComponent* EnhancedInputComponent = 
+		CastChecked<UEnhancedInputComponent>(PlayerInputComponent);
+	if (EnhancedInputComponent)
+	{
+		if (FireAction)
+		{
+			EnhancedInputComponent->BindAction
+			(FireAction, ETriggerEvent::Triggered, this, &AMyPawn::Fire);
+		}
+		if (PitchRollAction)
+		{
+			EnhancedInputComponent->BindAction
+			(FireAction, ETriggerEvent::Triggered, this, &AMyPawn::PitchRoll);
+		}
+	}
+
+}
+
+void AMyPawn::Fire(const FInputActionValue& Value)
+{
+}
+
+void AMyPawn::PitchRoll(const FInputActionValue& Value)
+{
+	FVector2D Values = Value.Get<FVector2D>();
+	FRotator DesireRotation(Values.Y, 0, Values.X);
+
+	AddActorLocalRotation(DesireRotation * 60.0f * 
+		UGameplayStatics::GetWorldDeltaSeconds(GetWorld()));
 }
 

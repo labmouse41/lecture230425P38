@@ -23,4 +23,12 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UPROPERTY(VisibleAnywhere, BlueprintreadOnly, Category="Components")
+	class UBoxComponent* Box;
+
+	UPROPERTY(VisibleAnywhere, BlueprintreadOnly, Category = "Components")
+	class UStaticMeshComponent* Body;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintreadOnly, Category = "Components")
+	class UProjectileMovementComponent* Movement;
 };

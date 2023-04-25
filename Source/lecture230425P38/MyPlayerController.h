@@ -14,4 +14,9 @@ class LECTURE230425P38_API AMyPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 	
+public:
+	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category = "Input")
+	class UInputMappingContext* InputContext;
+
+	virtual void BeginPlay() override;
 };

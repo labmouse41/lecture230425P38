@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
-
+#include "InputAction.h"
 
 #include "MyPawn.generated.h"
 
@@ -52,4 +52,11 @@ public:
 	UFloatingPawnMovement* Movement;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	UArrowComponent* Arrow;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Components")
+	class UInputAction* FireAction;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Components")
+	class UInputAction* PitchRollAction;
+
+	void Fire(const FInputActionValue& Value);
+	void PitchRoll(const FInputActionValue& Value);
 };
