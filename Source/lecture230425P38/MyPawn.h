@@ -35,4 +35,12 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	UBoxComponent* Box;
+	UStaticMeshComponent* Body;
+	UStaticMeshComponent* Left;
+	UStaticMeshComponent* Right;
+	USpringArmComponent*  Arm;
+	UCameraComponent* Cam;
+	UFloatingPawnMovement* Movement;
+	UArrowComponent* Arrow;
 };
